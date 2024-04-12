@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros de pacientes</title>
+    <link rel="stylesheet" href="stiloP.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="Ejecuta.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1> <img src="imagenes/letra-c.png" alt="letra c">
+            linica Estetica Castillo. </h1>
+    </header>
+
+    <h1>Historial Clinico Pacientes</h1>
+
+    <nav>
+        <ul class="tabs">
+            <li><a href="#agregar">Agregar Paciente</a></li>
+            <li><a href="#eliminar">Eliminar Paciente</a></li>
+            <li><a href="#buscar">Buscar Historial De Paciente</a></li>
+            <li><a href="#editar">Editar Paciente</a></li>
+        </ul>
+    </nav>
+
+    <div class="contenedor">
+        <section id="agregar">
+            <form id="formularioDatos" action="#" method="post">
+                <fieldset>
+                    <legend>
+                        <h1>Información Personal</h1>
+                    </legend>
+
+                    <label for="nombre">Nombre</label>
+                    <br>
+                    <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
+                    <br>
+
+                    <label for="apellidos">Apellidos</label>
+                    <br>
+                    <input type="text" name="apellidos" placeholder="Apellido" required>
+                    <br>
+
+                    <label for="direccion">Dirección</label>
+                    <br>
+                    <input type="text" name="direccion" placeholder="Dirección" required>
+                    <br>
+
+                    <label for="telefono">Teléfono</label>
+                    <br>
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                    <br>
+
+                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <br>
+                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                    <br>
+
+                    <label for="edad">Edad</label>
+                    <br>
+                    <input type="number" id="edad" name="edad" placeholder="Edad" required>
+                    <br>
+
+                    <label for="cedula">Cédula</label>
+                    <br>
+                    <input type="text" name="cedula" size="11" maxlength="11" placeholder="Cédula" required>
+                    <br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>
+                        <h1>Datos sobre el Estado de Salud y Modo de Vida</h1>
+                    </legend>
+
+                    <label>¿Sufre o ha sufrido de problemas de salud?</label>
+                    <br>
+                    <label><input type="radio" name="problemasSalud" value="cardiaco">Cardíaco</label>
+                    <label><input type="radio" name="problemasSalud" value="endocrino">Endocrino</label>
+                    <label><input type="radio" name="problemasSalud" value="circulacion">Circulación</label>
+                    <label><input type="radio" name="problemasSalud" value="digestivo">Digestivo</label>
+                    <label><input type="radio" name="problemasSalud" value="tensionArterial">Tensión
+                        Arterial</label>
+                    <label>Otro: <input type="text" name="otrosProblemasSalud"></label>
+                    <br><br>
+
+                    <input type="submit" value="Enviar" id="formDatos">
+                </fieldset>
+            </form>
+        </section>
+
+        <section id="eliminar">
+            <fieldset>
+                <legend>
+                    <h1>Formulario de Eliminación</h1>
+                </legend>
+                <form id="formularioEliminar">
+                    <label for="idEliminar">Cedula De Paciente Del Registro A Eliminar:</label>
+                    <input type="text" id="idEliminarInput" name="idEliminar" required>
+                    <input type="submit" value="Eliminar">
+                </form>
+            </fieldset>
+
+        </section>
+
+        <section id="buscar">
+            <fieldset>
+                <legend>
+                    <h1>Formulario de Búsqueda de Pacientes</h1>
+                </legend>
+                <form id="formularioBuscar">
+                    <label for="cedula">Buscar por Cédula:</label>
+                    <input type="text" id="cedula" name="cedula" required>
+                    <button type="button" onclick="buscarPaciente()">Buscar</button>
+                </form>
+
+                <table id="tablaResultados">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Dirección</th>
+                            <th>Teléfono</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Edad</th>
+                            <th>Cédula</th>
+                            <th>Problemas de Salud</th>
+                            <th>Otros Problemas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTabla">
+                        <!-- Aquí se mostrarán los resultados -->
+                    </tbody>
+                </table>
+            </fieldset>
+        </section>
+
+        <table id="tablaResultados">
+
+        </table>
+
+        <section id="editar">
+            <fieldset>
+                <legend>
+                    <h1>Formulario de Edición de Información del Paciente</h1>
+                </legend>
+                <!-- Agrega un ID al formulario oara poder buscar los datos -->
+                <form id="formularioEditar">
+                    <label for="idPaciente">Cedula del Paciente a Editar:</label>
+                    <input type="text" id="idPaciente" name="idPaciente" required><br>
+
+                    <label for="nombre">Nuevo Nombre:</label>
+                    <input type="text" id="nombre" name="nombre"><br>
+
+                    <label for="fechaNacimiento">Nueva Fecha de Nacimiento:</label>
+                    <input type="date" id="fechaNacimiento" name="fechaNacimiento"><br>
+
+                    <label for="numeroCedula">Nuevo Número de Cédula:</label>
+                    <input type="text" id="numeroCedula" name="numeroCedula"><br>
+
+                    <input type="submit" value="Guardar Cambios">
+                </form>
+
+            </fieldset>
+        </section>
+    </div>
+
+    <footer class="pie_pag">
+        <p>
+            Clinica Estética Castillo
+
+            Bienvenido a Clínica Estética Castillo, tu espacio de belleza personalizado creado en 2023. Nos
+            dedicamos a realzar tu belleza natural con tratamientos de última tecnología y atención personalizada.
+            Contáctanos para descubrir cómo podemos ayudarte a lograr tu mejor versión
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

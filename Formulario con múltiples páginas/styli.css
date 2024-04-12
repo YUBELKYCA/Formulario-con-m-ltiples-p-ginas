@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.inicio {
+    width: 900px;
+    max-width: 90%;
+    margin: 40px auto;
+    top: 100%;
+}
+
+body {
+    background: #f5e1ce;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+ul.navega {
+    width: 100%;
+    background: #7a5c3c;
+
+    list-style: none;
+    display: flex;
+}
+
+header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    padding: 10px;
+    text-align: center;
+}
+
+ul.navega li {
+    width: 10%;
+}
+
+ul.navega li a {
+    color: #f5e1ce;
+
+    text-decoration: none;
+    text-align: center;
+    font-size: 19px;
+    display: block;
+    padding: 18px 0;
+}
+
+.active {
+    background: #b08e6b;
+
+}
+
+.inicio {
+    width: 100%;
+    background-image: url('imagenes/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 68px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #e8c39e;
+
+}
+
+.inicio p {
+    color: #5F5A4D;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    background-color: #f5e1ce;
+
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    font-size: small;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    color: #ffffff;
+
+}
+
+ul.navega:hover {
+    background-color: #b08e6b;
+
+}
